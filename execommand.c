@@ -1,16 +1,19 @@
 #include "shell.h"
 
 
-int execmd(char *cmd,char *av[],int i)
+int execmd(char **args,char *av[],int i)
 {
         pid_t pid;
-        char *arr[] = {cmd,NULL};
         int stat;
+
+	//printf("%s\n", args[0]);
+	if (strcmp(args[0], "exit") == 0)
+		exit_status(args);
 
         pid = fork();
         if (pid == 0)
         {
-                execve(cmd,arr,NULL);
+                execve(args[0],args,NULL);
 		if (i == 1)
                 	perror(*(av + 0));
 		else
