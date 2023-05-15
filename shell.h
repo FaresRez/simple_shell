@@ -5,5 +5,7 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <string.h>
-int execmd(char *cmd, char *av[], int i);
+int execmd(char **args, char *av[], int i);
+char **arg_sep(char *cmd);
+void exit_status(char **args);
 #endif

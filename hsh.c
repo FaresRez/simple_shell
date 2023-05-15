@@ -5,6 +5,7 @@ int main(int ac, char *av[])
 	char *input = NULL;
 	size_t n;
 	ssize_t read;
+	char **args;
 	int interactive = isatty(STDIN_FILENO);
 
 	if (interactive)
@@ -22,17 +23,17 @@ int main(int ac, char *av[])
 			continue;
 		/*execute the commande */
 		/*to handle the arguments we need to strlok the input: */
-		input[strcspn(input, "\n")] = '\0';
-		execmd(input,av,1);
+		args = arg_sep(input);
+		execmd(args, av, 1);
  	}
 	}
 	else
 	{
 		while (getline(&input, &n, stdin) > 0)
 		{
-			printf("%s",input);
-			input[strcspn(input, "\n")] = '\0';
-			execmd(input,av,0);
+			//input[strcspn(input, "\n")] = '\0';
+			args = arg_sep(input);
+			execmd(args, av, 0);
 		}
 
 	}
