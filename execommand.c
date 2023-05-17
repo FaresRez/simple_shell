@@ -6,9 +6,11 @@ int execmd(char **args,char *av[],int i)
         pid_t pid;
         int stat;
 
-	//printf("%s\n", args[0]);
+	printf("%s\n", args[0]);
 	if (strcmp(args[0], "exit") == 0)
+	{	
 		exit_status(args);
+	}
 
         pid = fork();
         if (pid == 0)
@@ -30,4 +32,5 @@ int execmd(char **args,char *av[],int i)
                 printf("fork failed");
                 exit(1);
         }
+	return (0);
 }

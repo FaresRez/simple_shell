@@ -8,7 +8,7 @@ void exit_status(char **args)
 {
 	int status = 0;
 
-	if (args[1] != NULL && atoi(args[1]) >= 0)
+	if (args[1] != NULL)
 	{
 		status = atoi(args[1]);
 	}

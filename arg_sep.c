@@ -12,13 +12,15 @@ char **arg_sep(char *cmd)
 	char *token;
 	static char *args[512];
 
-	token = strtok(cmd, " \n");
+	token = strtok(cmd, " \n\t");
 	while (token != NULL)
 	{
 		args[num_args] = token;
 		num_args++;
-		token = strtok(NULL, " \n");
+		token = strtok(NULL, " \n\t");
 	}
 	args[num_args] = NULL;
+	if (args[0] == NULL)
+		exit(0);
 	return (args);
 }
