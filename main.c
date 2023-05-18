@@ -21,19 +21,17 @@ int main(int ac, char *av[])
 		}
 		if (strcmp(input,"\n") == 0)
 			continue;
-		/*execute the commande */
-		/*to handle the arguments we need to strlok the input: */
+
 		args = arg_sep(input);
-		execmd(args, av, 1);
+		execmd(args, av, input, 1);
  	}
 	}
 	else
 	{
 		while (getline(&input, &n, stdin) > 0)
 		{
-			//input[strcspn(input, "\n")] = '\0';
 			args = arg_sep(input);
-			execmd(args, av, 0);
+			execmd(args, av, input, 0);
 		}
 
 	}

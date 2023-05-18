@@ -1,36 +1,44 @@
 #include "shell.h"
 
 
-int execmd(char **args,char *av[],int i)
+void execmd(char **args, char *av[], char *input, int i)
 {
         pid_t pid;
         int stat;
+	char *full_cmd;
 
-	printf("%s\n", args[0]);
 	if (strcmp(args[0], "exit") == 0)
-	{	
+	{
+		free(input);
 		exit_status(args);
 	}
 
-        pid = fork();
+	full_cmd = handle_path(args[0]);
+	if (full_cmd == NULL)
+		return;
+
+		
+	pid = fork();
         if (pid == 0)
         {
-                execve(args[0],args,NULL);
+                execve(full_cmd, args, environ);
 		if (i == 1)
                 	perror(*(av + 0));
 		else
 			/*change error here for non interactive*/
 			perror(*(av + 0));
-                return 1;
+                return;
         }
         else if (pid > 0)
         {
+		//check if the command already has absolute path or not
+		//if it doesn't it means full_cmd needs to be freed
+		if (strlen(full_cmd) != strlen(args[0]))
+			free(full_cmd);
                 waitpid(pid, &stat,0);
         }
         else
         {
                 printf("fork failed");
-                exit(1);
         }
-	return (0);
 }

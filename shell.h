@@ -5,7 +5,10 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <string.h>
-int execmd(char **args, char *av[], int i);
-char **arg_sep(char *cmd);
+extern char** environ;
+void execmd(char **args, char *av[], char *input, int i);
+char **arg_sep(char *input);
 void exit_status(char **args);
+int access_cmd(char *path, char **args, char *full_cmd);
+char *handle_path(char *input);
 #endif
