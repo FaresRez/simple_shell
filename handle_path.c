@@ -1,22 +1,17 @@
 #include "shell.h"
-
 /**
  * handle_path - checks if the command exists or not and handle's the path
- * @args: array of arguments
  * @input: input by user
- * Return: pointer to the full cmd we need to execute
+ * Return: pointer to the full cmd we need to execute with absolute path
  */
 char *handle_path(char *input)
 {
 	char *path = NULL, *full_cmd = NULL, *tmp = NULL;
-	char *dir = NULL, *path_copy = NULL, *error = NULL;
+	char *dir = NULL, *path_copy = NULL;
 	int j;
 
 	if (input[0] == '/')
-	{
 		return (input);
-	}
-
 	for (j = 0; environ[j] != NULL; j++)
 	{
 		tmp = environ[j];
@@ -32,27 +27,23 @@ char *handle_path(char *input)
 		return (NULL);
 	}
 	path_copy = strdup(path);
-
 	dir = strtok(path_copy, ":");
 	while (dir != NULL)
 	{
 		full_cmd = malloc(strlen(path) + strlen(input) + 2);
 		if (full_cmd == NULL)
-		{
-			perror("malloc");
 			return (NULL);
-		}
-		sprintf(full_cmd, "%s/%s", dir, input);
+		strcpy(full_cmd, dir);
+		strcat(full_cmd, "/");
+		strcat(full_cmd, input);
 		if (access(full_cmd, X_OK) == 0)
 		{
 			free(path_copy);
 			return (full_cmd);
 		}
-
 		free(full_cmd);
 		dir = strtok(NULL, ":");
 	}
 	free(path_copy);
-
 	return (NULL);
 }

@@ -1,6 +1,11 @@
 #include "shell.h"
-
-int main(int ac, char *av[])
+/**
+ * main - a simple shell program
+ * @ac: number of arguments inputted at command line
+ * @av: array of arguments
+ * Return: 0 success
+ */
+int main(__attribute__((unused)) int ac, char *av[])
 {
 	char *input = NULL;
 	size_t n;
@@ -10,24 +15,24 @@ int main(int ac, char *av[])
 
 	if (interactive)
 	{
-	while (1)
-	{
-		write(1,"myShell$ ",9);
-		read = getline(&input, &n, stdin);
-		if(read == -1)
+		while (1)
 		{
-			write(1,"\n",1);
-			exit(0);
+			write(1, "myShell$ ", 9);
+			read = getline(&input, &n, stdin);
+			if (read == -1)
+			{
+				write(1, "\n", 1);
+				exit(0);
+			}
+			if (strcmp(input, "\n") == 0)
+				continue;
+
+			args = arg_sep(input);
+			if (args[0] == NULL)
+				continue;
+
+			execmd(args, av, input, 1);
 		}
-		if (strcmp(input,"\n") == 0)
-			continue;
-
-		args = arg_sep(input);
-		if (args[0] == NULL)
-			continue;
-
-		execmd(args, av, input, 1);
- 	}
 	}
 	else
 	{
@@ -35,10 +40,10 @@ int main(int ac, char *av[])
 		{
 			args = arg_sep(input);
 			if (args[0] == NULL)
-				exit(0);
-                	execmd(args, av, input, 0);
+				continue;
+			execmd(args, av, input, 0);
 		}
 
 	}
-	return 0;
+	return (0);
 }
