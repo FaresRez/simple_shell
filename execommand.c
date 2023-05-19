@@ -15,6 +15,10 @@ void execmd(char **args, char *av[], char *input, int i)
 	full_cmd = handle_path(args[0]);
 	if (full_cmd == NULL)
 	{
+		if (!i)
+			printf("%s: 1: %s: not found\n", av[0], args[0]);
+		else
+			printf("%s: Command not found\n", input);
 		return;
 	}
 
@@ -30,14 +34,14 @@ void execmd(char **args, char *av[], char *input, int i)
 		}
 		else
 		{
-			perror("execve");
+			printf("%s: 1: %s: not found\n", av[0], args[0]);
 		}
                 return;
         }
         else if (pid > 0)
         {
 		//check if the command already has absolute path or not
-		//if it doesn't it means full_cmd needs to be freed
+		//if it doesn't it means path was added and full_cmd needs to be freed
 		if (strlen(full_cmd) != strlen(args[0]))
 			free(full_cmd);
                 waitpid(pid, &stat,0);

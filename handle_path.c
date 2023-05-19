@@ -53,6 +53,6 @@ char *handle_path(char *input)
 		dir = strtok(NULL, ":");
 	}
 	free(path_copy);
-	printf("%s: Command not found\n", input);
+
 	return (NULL);
 }
