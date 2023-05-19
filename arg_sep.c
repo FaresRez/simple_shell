@@ -8,7 +8,7 @@
  */
 char **arg_sep(char *input)
 {
-	int i, num_args = 0;
+	int num_args = 0;
 	char *token;
 	static char *args[250];
 
@@ -27,7 +27,5 @@ char **arg_sep(char *input)
 		strcat(cmd, " ");
 	}
 	free(input);*/
-	if (args[0] == NULL)
-		exit(0);
 	return (args);
 }

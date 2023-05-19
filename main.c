@@ -23,6 +23,9 @@ int main(int ac, char *av[])
 			continue;
 
 		args = arg_sep(input);
+		if (args[0] == NULL)
+			continue;
+
 		execmd(args, av, input, 1);
  	}
 	}
@@ -31,7 +34,9 @@ int main(int ac, char *av[])
 		while (getline(&input, &n, stdin) > 0)
 		{
 			args = arg_sep(input);
-			execmd(args, av, input, 0);
+			if (args[0] == NULL)
+				exit(0);
+                	execmd(args, av, input, 0);
 		}
 
 	}

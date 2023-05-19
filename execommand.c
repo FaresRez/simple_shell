@@ -1,6 +1,5 @@
 #include "shell.h"
 
-
 void execmd(char **args, char *av[], char *input, int i)
 {
         pid_t pid;
@@ -15,7 +14,9 @@ void execmd(char **args, char *av[], char *input, int i)
 
 	full_cmd = handle_path(args[0]);
 	if (full_cmd == NULL)
+	{
 		return;
+	}
 
 		
 	pid = fork();
@@ -23,10 +24,14 @@ void execmd(char **args, char *av[], char *input, int i)
         {
                 execve(full_cmd, args, environ);
 		if (i == 1)
-                	perror(*(av + 0));
+		{
+			write(2,"-hsh: ", 6);
+			perror(args[0]);
+		}
 		else
-			/*change error here for non interactive*/
-			perror(*(av + 0));
+		{
+			perror("execve");
+		}
                 return;
         }
         else if (pid > 0)

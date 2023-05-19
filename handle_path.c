@@ -9,17 +9,17 @@
 char *handle_path(char *input)
 {
 	char *path = NULL, *full_cmd = NULL, *tmp = NULL;
-	char *dir = NULL, *path_copy = NULL;
-	int i;
+	char *dir = NULL, *path_copy = NULL, *error = NULL;
+	int j;
 
 	if (input[0] == '/')
 	{
 		return (input);
 	}
 
-	for (i = 0; environ[i] != NULL; i++)
+	for (j = 0; environ[j] != NULL; j++)
 	{
-		tmp = environ[i];
+		tmp = environ[j];
 		if (strncmp(tmp, "PATH=", 5) == 0)
 		{
 			path = tmp + 5;
