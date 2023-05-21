@@ -15,7 +15,7 @@ char *handle_path(char *input)
 	for (j = 0; environ[j] != NULL; j++)
 	{
 		tmp = environ[j];
-		if (strncmp(tmp, "PATH=", 5) == 0)
+		if (_strncmp(tmp, "PATH=", 5) == 0)
 		{
 			path = tmp + 5;
 			break;
