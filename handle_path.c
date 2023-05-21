@@ -27,7 +27,7 @@ char *handle_path(char *input)
 		return (NULL);
 	}
 	path_copy = _strdup(path);
-	dir = strtok(path_copy, ":");
+	dir = _strtok(path_copy, ":");
 	while (dir != NULL)
 	{
 		full_cmd = malloc(_strlen(path) + _strlen(input) + 2);
@@ -42,7 +42,7 @@ char *handle_path(char *input)
 			return (full_cmd);
 		}
 		free(full_cmd);
-		dir = strtok(NULL, ":");
+		dir = _strtok(NULL, ":");
 	}
 	free(path_copy);
 	return (NULL);

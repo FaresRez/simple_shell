@@ -13,6 +13,7 @@ void _strcpy(char *to, char *from);
 int _strcmp(char *str1, char *str2);
 int _strlen(const char *str);
 char *_strchr(const char *k, int c);
+char *_strtok(char *str, const char *delim);
 int _atoi(const char *str);
 int _strncmp(const char *str1, const char *str2, size_t n);
 char *_strcat(char *dest, const char *src);
