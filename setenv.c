@@ -37,17 +37,3 @@ int my_setenv(char **args)
 	}
 	return (1);
 }
-/**
- * set_checker - checks if cmd is setenv or unsetenv and calls my_setenv func
- * @args: array of tokenized strings from input
- * Return: 0 on success
- */
-int set_checker(char **args)
-{
-	if (_strcmp(args[0], "setenv") == 0 || _strcmp(args[0], "unsetenv") == 0)
-	{
-		my_setenv(args);
-		return (0);
-	}
-	return (1);
-}

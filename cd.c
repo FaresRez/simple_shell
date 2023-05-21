@@ -45,17 +45,3 @@ int my_cd(char **args)
 	}
 	return (0);
 }
-/**
- * cd_checker - checks if the command inputted is cd and calls my_cd func
- * @args: array of tokenized strings from input
- * Return: 0 if cmd is cd else 1
- */
-int cd_checker(char **args)
-{
-	if (_strcmp(args[0], "cd") == 0)
-	{
-		my_cd(args);
-		return (0);
-	}
-	return (1);
-}
