@@ -15,7 +15,7 @@ char *handle_path(char *input)
 	for (j = 0; environ[j] != NULL; j++)
 	{
 		tmp = environ[j];
-		if (strncmp(tmp, "PATH=", 5) == 0)
+		if (_strncmp(tmp, "PATH=", 5) == 0)
 		{
 			path = tmp + 5;
 			break;
@@ -27,7 +27,7 @@ char *handle_path(char *input)
 		return (NULL);
 	}
 	path_copy = _strdup(path);
-	dir = strtok(path_copy, ":");
+	dir = _strtok(path_copy, ":");
 	while (dir != NULL)
 	{
 		full_cmd = malloc(_strlen(path) + _strlen(input) + 2);
@@ -42,7 +42,7 @@ char *handle_path(char *input)
 			return (full_cmd);
 		}
 		free(full_cmd);
-		dir = strtok(NULL, ":");
+		dir = _strtok(NULL, ":");
 	}
 	free(path_copy);
 	return (NULL);

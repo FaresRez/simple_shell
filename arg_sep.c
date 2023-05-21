@@ -12,12 +12,12 @@ char **arg_sep(char *input)
 	char *token;
 	static char *args[250];
 
-	token = strtok(input, " \n\t\r");
+	token = _strtok(input, " \n\t\r");
 	while (token != NULL)
 	{
 		args[args_num] = token;
 		args_num++;
-		token = strtok(NULL, " \n\t\r");
+		token = _strtok(NULL, " \n\t\r");
 	}
 	args[args_num] = NULL;
 
