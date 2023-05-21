@@ -26,16 +26,16 @@ char *handle_path(char *input)
 		perror("environ");
 		return (NULL);
 	}
-	path_copy = strdup(path);
+	path_copy = _strdup(path);
 	dir = strtok(path_copy, ":");
 	while (dir != NULL)
 	{
-		full_cmd = malloc(strlen(path) + strlen(input) + 2);
+		full_cmd = malloc(_strlen(path) + _strlen(input) + 2);
 		if (full_cmd == NULL)
 			return (NULL);
-		strcpy(full_cmd, dir);
-		strcat(full_cmd, "/");
-		strcat(full_cmd, input);
+		_strcpy(full_cmd, dir);
+		_strcat(full_cmd, "/");
+		_strcat(full_cmd, input);
 		if (access(full_cmd, X_OK) == 0)
 		{
 			free(path_copy);

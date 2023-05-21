@@ -24,7 +24,7 @@ int main(__attribute__((unused)) int ac, char *av[])
 				write(1, "\n", 1);
 				exit(0);
 			}
-			if (strcmp(input, "\n") == 0)
+			if (_strcmp(input, "\n") == 0)
 				continue;
 
 			args = arg_sep(input);
