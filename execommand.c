@@ -10,16 +10,16 @@ void error_msg(char *av[], char **args, int i, int n)
 {
 	if (!i)
 	{
-		write(2, av[0], strlen(av[0]));
+		write(2, av[0], _strlen(av[0]));
 		write(2, ": 1: ", 5);
-		write(2, args[0], strlen(args[0]));
+		write(2, args[0], _strlen(args[0]));
 		write(2, ": not found\n", 12);
 	}
 	else
 	{
 		if (n == 1)
 		{
-			write(2, args[0], strlen(args[0]));
+			write(2, args[0], _strlen(args[0]));
 			write(2, ": Command not found\n", 20);
 		}
 		else if (n == 2)
@@ -42,7 +42,7 @@ void execmd(char **args, char *av[], char *input, int i)
 	int stat;
 	char *full_cmd;
 
-	if (strcmp(args[0], "exit") == 0)
+	if (_strcmp(args[0], "exit") == 0)
 	{
 		free(input);
 		exit_status(args);
@@ -61,7 +61,7 @@ void execmd(char **args, char *av[], char *input, int i)
 	}
 	else if (pid > 0)
 	{
-		if (strlen(full_cmd) != strlen(args[0]))
+		if (_strlen(full_cmd) != _strlen(args[0]))
 			free(full_cmd);
 		waitpid(pid, &stat, 0);
 	}

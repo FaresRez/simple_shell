@@ -8,7 +8,14 @@
 #include <string.h>
 
 extern char **environ;
-
+char *_strdup(const char *s);
+void _strcpy(char *to, char *from);
+int _strcmp(char *str1, char *str2);
+int _strlen(const char *str);
+char *_strchr(const char *k, int c);
+int _atoi(const char *str);
+int _strncmp(const char *str1, const char *str2, size_t n);
+char *_strcat(char *dest, const char *src);
 void execmd(char **args, char *av[], char *input, int i);
 char **arg_sep(char *input);
 void exit_status(char **args);
