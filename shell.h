@@ -8,6 +8,7 @@
 #include <string.h>
 
 extern char **environ;
+
 char *_strdup(const char *s);
 void _strcpy(char *to, char *from);
 int _strcmp(char *str1, char *str2);
@@ -23,5 +24,8 @@ void exit_status(char **args);
 int access_cmd(char *path, char **args, char *full_cmd);
 char *handle_path(char *input);
 void error_msg(char *av[], char **args, int i, int n);
+char *get_env(char *var_name);
+int my_cd(char **args);
+int cd_checker(char **args);
 
 #endif
