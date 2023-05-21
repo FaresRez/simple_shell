@@ -27,5 +27,6 @@ void error_msg(char *av[], char **args, int i, int n);
 char *get_env(char *var_name);
 int my_cd(char **args);
 int cd_checker(char **args);
-
+int my_setenv(char **args);
+int set_checker(char **args);
 #endif

@@ -30,7 +30,7 @@ int main(__attribute__((unused)) int ac, char *av[])
 			args = arg_sep(input);
 			if (args[0] == NULL)
 				continue;
-			if (cd_checker(args) == 0)
+			if (cd_checker(args) == 0 || set_checker(args) == 0)
 				continue;
 			execmd(args, av, input, 1);
 		}
