@@ -6,21 +6,12 @@
  */
 char *handle_path(char *input)
 {
-	char *path = NULL, *full_cmd = NULL, *tmp = NULL;
-	char *dir = NULL, *path_copy = NULL;
-	int j;
+	char *path = get_env("PATH"); 
+	char *full_cmd = NULL, *dir = NULL, *path_copy = NULL;
 
 	if (input[0] == '/')
 		return (input);
-	for (j = 0; environ[j] != NULL; j++)
-	{
-		tmp = environ[j];
-		if (_strncmp(tmp, "PATH=", 5) == 0)
-		{
-			path = tmp + 5;
-			break;
-		}
-	}
+
 	if (path == NULL)
 	{
 		perror("environ");

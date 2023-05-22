@@ -3,8 +3,9 @@
 /**
  * exit_status - exits the shell with or without a status
  * @args: array of arguments
+ * Return: 0
  */
-void exit_status(char **args)
+int exit_status(char **args)
 {
 	int status = 0;
 
@@ -13,4 +14,5 @@ void exit_status(char **args)
 		status = _atoi(args[1]);
 	}
 	exit(status);
+	return (0);
 }

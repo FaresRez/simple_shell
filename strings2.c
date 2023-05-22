@@ -81,11 +81,11 @@ int _atoi(const char *str)
 }
 
 /**
- * _strncmp - compares two strings
- * @str1: string
- * @str2: string2
- * @n: nb of char to compare
- * Return: int
+ * _strncmp - compares n characters of two strings
+ * @str1: first string
+ * @str2: second string
+ * @n: number of chars to compare
+ * Return: 0 on success
  */
 int _strncmp(const char *str1, const char *str2, size_t n)
 {
