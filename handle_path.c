@@ -6,7 +6,7 @@
  */
 char *handle_path(char *input)
 {
-	char *path = get_env("PATH"); 
+	char *path = get_env("PATH");
 	char *full_cmd = NULL, *dir = NULL, *path_copy = NULL;
 
 	if (input[0] == '/')

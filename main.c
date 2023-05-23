@@ -24,13 +24,9 @@ int main(__attribute__((unused)) int ac, char *av[])
 				write(1, "\n", 1);
 				exit(0);
 			}
-			if (_strcmp(input, "\n") == 0)
-				continue;
-
 			args = arg_sep(input);
 			if (args[0] == NULL)
 				continue;
-
 			if (built_in_parser(args) == 0)
 				continue;
 			execmd(args, av, input, 1);
