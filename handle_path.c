@@ -9,7 +9,7 @@ char *handle_path(char *input)
 	char *path = get_env("PATH");
 	char *full_cmd = NULL, *dir = NULL, *path_copy = NULL;
 
-	if (input[0] == '/')
+	if (input[0] == '/' || input[0] == '.')
 		return (input);
 
 	if (path == NULL)
