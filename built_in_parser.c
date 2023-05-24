@@ -13,6 +13,9 @@ int built_in_parser(char **args, char *input)
 
 	built_ins func_arr[] = {
 		{"exit", exit_status},
+		{"setenv", my_setenv},
+		{"unsetenv", my_setenv},
+		{"cd", my_cd},
 		{NULL, NULL}
 	};
 
