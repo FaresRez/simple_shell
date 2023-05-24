@@ -43,8 +43,8 @@ int main(__attribute__((unused)) int ac, char *av[])
 			if (built_in_parser(args, input) == 0)
 				continue;
 			execmd(args, av, 0);
-			free(input);
 		}
+		free(input);
 
 	}
 	return (0);
