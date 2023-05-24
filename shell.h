@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <string.h>
-
+#include <limits.h>
 extern char **environ;
 
 /**
