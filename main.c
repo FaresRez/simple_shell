@@ -45,7 +45,6 @@ int main(__attribute__((unused)) int ac, char *av[])
 			execmd(args, av, 0);
 		}
 		free(input);
-
 	}
 	return (0);
 }
