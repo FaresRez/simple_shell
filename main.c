@@ -21,7 +21,7 @@ int main(__attribute__((unused)) int ac, char *av[])
 			read = getline(&input, &n, stdin);
 			if (read == -1)
 			{
-				write(1, "\n", 1);
+				/*write(1, "\n", 1);*/
 				exit(0);
 			}
 			args = arg_sep(input);
