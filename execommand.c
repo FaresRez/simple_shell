@@ -33,20 +33,14 @@ void error_msg(char *av[], char **args, int i, int n)
  * execmd - executes the command
  * @args: array of tokenized arguments
  * @av: array of strings input into command line
- * @input: input string from user
  * @i: mode specifier (can be either 1 or 0)
  */
-void execmd(char **args, char *av[], char *input, int i)
+void execmd(char **args, char *av[], int i)
 {
 	pid_t pid;
 	int stat;
 	char *full_cmd;
 
-	if (_strcmp(args[0], "exit") == 0)
-	{
-		free(input);
-		exit_status(args);
-	}
 	full_cmd = handle_path(args[0]);
 	if (full_cmd == NULL)
 	{

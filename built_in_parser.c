@@ -4,16 +4,14 @@
  * built_in_parser - a function that selects other functions
  * depending on command
  * @args: array of tokenized strings from input
+ * @input: command input
  * Return: 0 on success, 1 on error
  */
-int built_in_parser(char **args)
+int built_in_parser(char **args, char *input)
 {
 	int i;
 
 	built_ins func_arr[] = {
-		{"cd", my_cd},
-		{"setenv", my_setenv},
-		{"unsetenv", my_setenv},
 		{"exit", exit_status},
 		{NULL, NULL}
 	};
@@ -22,7 +20,7 @@ int built_in_parser(char **args)
 	{
 		if (_strcmp(args[0], func_arr[i].built_in) == 0)
 		{
-			func_arr[i].func(args);
+			func_arr[i].func(args, input);
 			return (0);
 		}
 	}

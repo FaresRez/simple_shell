@@ -7,10 +7,9 @@
  */
 int main(__attribute__((unused)) int ac, char *av[])
 {
-	char *input = NULL;
-	size_t n;
+	size_t n = 0;
+	char *input = NULL, **args;
 	ssize_t read;
-	char **args;
 	int interactive = isatty(STDIN_FILENO);
 
 	if (interactive)
@@ -21,15 +20,17 @@ int main(__attribute__((unused)) int ac, char *av[])
 			read = getline(&input, &n, stdin);
 			if (read == -1)
 			{
-				/*write(1, "\n", 1);*/
+				write(1, "\n", 1);
+				free(input);
 				exit(0);
 			}
+			input[read - 1] = '\0';
 			args = arg_sep(input);
 			if (args[0] == NULL)
 				continue;
-			if (built_in_parser(args) == 0)
+			if (built_in_parser(args, input) == 0)
 				continue;
-			execmd(args, av, input, 1);
+			execmd(args, av, 1);
 		}
 	}
 	else
@@ -39,9 +40,9 @@ int main(__attribute__((unused)) int ac, char *av[])
 			args = arg_sep(input);
 			if (args[0] == NULL)
 				continue;
-			if (built_in_parser(args) == 0)
+			if (built_in_parser(args, input) == 0)
 				continue;
-			execmd(args, av, input, 0);
+			execmd(args, av, 0);
 		}
 
 	}

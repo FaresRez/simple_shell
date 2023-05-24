@@ -17,7 +17,7 @@ extern char **environ;
 typedef struct built_ins
 {
 	char *built_in;
-	int (*func)(char **args);
+	int (*func)(char **args, char *input);
 } built_ins;
 
 /* string manipulation function prototypes */
@@ -31,15 +31,16 @@ int _atoi(const char *str);
 int _strncmp(const char *str1, const char *str2, size_t n);
 char *_strcat(char *dest, const char *src);
 /* shell functions */
-void execmd(char **args, char *av[], char *input, int i);
+char *getcmd(void);
+void execmd(char **args, char *av[], int i);
 char **arg_sep(char *input);
 int access_cmd(char *path, char **args, char *full_cmd);
 char *handle_path(char *input);
 void error_msg(char *av[], char **args, int i, int n);
 char *get_env(char *var_name);
 /* built_in commands functions */
-int exit_status(char **args);
-int my_cd(char **args);
-int my_setenv(char **args);
-int built_in_parser(char **args);
+int exit_status(char **args, char *input);
+int my_cd(char **args, char *input);
+int my_setenv(char **args, char *input);
+int built_in_parser(char **args, char *input);
 #endif

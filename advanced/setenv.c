@@ -5,7 +5,7 @@
  * @args: array of tokenized strings from input
  * Return: 1 on success, 0 on error
  */
-int my_setenv(char **args)
+int my_setenv(char **args, __attribute__((unused)) char *input)
 {
 	int j, set;
 

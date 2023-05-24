@@ -4,7 +4,7 @@
  * @args: array of tokenized strings from input
  * Return: 0 on success, 1 on failure
  */
-int my_cd(char **args)
+int my_cd(char **args, __attribute__((unused)) char *input)
 {
 	char *home = get_env("HOME");
 	static char *prev_dir, *curr_dir;
