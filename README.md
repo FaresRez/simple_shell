@@ -3,6 +3,7 @@
 This repository contains the implementation of the simple shell group project for ALX africa.
 The gates of shell is an end of trimester project that helps students understand and implement the advanced concepts behind the shell program including processes, system calls, bit manipulation, file management, error handling, ...
 Shell is a simple UNIX command interpreter that replicates functionalities of the simple shell (sh).
+
 This program was written entirely in C Language.
 
 ## AUTHORS
@@ -23,5 +24,3 @@ this project is created by Cohort 13 students :
 - Implement the env built-in, that prints the current environment
 - Implement the setenv and unsetenv builtin commands
 - Implement the builtin command cd
-- Handle the commands separator ;
-- can take a file as a command line argument
